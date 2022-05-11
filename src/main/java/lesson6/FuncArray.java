@@ -1,3 +1,5 @@
+package lesson6;
+
 public class FuncArray {
 
     // функция, которая возвращает массив
