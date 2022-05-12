@@ -5,11 +5,11 @@ import java.util.Map;
 
 public class Hospital {
 
-    private String hospitalName;
-    private Address address;
-    private List<Doctor> doctors;
-    private Map<Integer,String> rooms;
-    private List<InsuranseCompanies> acceptedInsuranses;
+    private final String hospitalName;
+    private final Address address;
+    private final List<Doctor> doctors;
+    private final Map<Integer,String> rooms;
+    private final List<InsuranseCompanies> acceptedInsuranses;
 
     public Hospital(String hospitalName, Address address, List<Doctor> doctors, Map<Integer, String> rooms, List<InsuranseCompanies> acceptedInsuranses) {
         this.hospitalName = hospitalName;
