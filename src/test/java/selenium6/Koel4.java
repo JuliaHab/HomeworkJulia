@@ -34,7 +34,7 @@ public class Koel4 {
         fluentWait = new FluentWait<>(driver)
                 .pollingEvery(Duration.ofMillis(200)) // интервал поиска
                 .withTimeout(Duration.ofSeconds(10)) // максималное время поиска
-                .ignoring(NoSuchElementException.class) // игнорирование ошибки
+                .ignoring(org.openqa.selenium.NoSuchElementException.class) // игнорирование ошибки
                 .ignoring(ElementClickInterceptedException.class) // игнорирование ошибки
                 .ignoring(StaleElementReferenceException.class); // игнорирование ошибки
         driver.get("https://bbb.testpro.io");
@@ -62,7 +62,7 @@ public class Koel4 {
         loginButton.click();
 
         By errorFrameLocator = By.className("error");
-        wait.until(x->x.findElement(errorFrameLocator).isDisplayed()); // почему wait, а не fluentWait???!!!
+        fluentWait.until(x->x.findElement(errorFrameLocator).isDisplayed());
         WebElement errorFrame = driver.findElement(errorFrameLocator);
         Assert.assertTrue(errorFrame.isDisplayed());
     }
