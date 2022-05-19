@@ -4,19 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class Koel3 {
+import java.awt.*;
+import java.util.List;
 
-    // рефакторинг - улучшение кода без изменения входящих и исходящих данных
-    // выносим метод до теста и после теста, это поможет не писать одинаковую часть снова и снова в @Test
-    /* суть: прописано 2 ранзых @Test ниже, сначало программа начнет метод Before и пройдет его, затем пройдет первый
-    @Test, далее начнется метод After, в котором браузер закроется. Затем подет проверка второго @Test, перед ним снова
-    будет пройден метод Before, а после будет пройден метод After */
+public class Koel3 {
 
     private WebDriver driver;
 
@@ -34,44 +29,35 @@ public class Koel3 {
     }
 
     @Test
-    public void loginToKoel_incorrectLogin() throws InterruptedException {
+    public void properties(){
 
-        By emailFieldLocator = By.xpath("//*[@type='email']");
-        WebElement emailField = driver.findElement(emailFieldLocator);
-        emailField.sendKeys("Flower_cool@mail.ru");
+        // свойства driver
 
-        By passwordFieldLocator = By.cssSelector("[type=\"password\"]");
-        WebElement passwordField = driver.findElement(passwordFieldLocator);
-        passwordField.sendKeys("errorPassword");
+        String url = driver.getCurrentUrl(); // вытаскивает url
+        System.out.println(url);
 
-        By loginButtonLocator = By.xpath("//*[@type=\"submit\"]");
-        WebElement loginButton = driver.findElement(loginButtonLocator);
-        loginButton.click();
-        Thread.sleep(300);
+        String title = driver.getTitle(); // вытаскивает название титула
+        System.out.println(title);
 
-        By errorFrameLocator = By.className("error");
-        WebElement errorFrame = driver.findElement(errorFrameLocator);
-        Assert.assertTrue(errorFrame.isDisplayed());
-    }
+        List<WebElement> dive = driver.findElements(By.tagName("div")); // вытаскивает количство элементов с названием "div"
+        System.out.println(dive.size());
 
-    @Test
-    public void loginToKoel() throws InterruptedException {
+        List<WebElement> tds = driver.findElements(By.tagName("td")); // ищет элементы и выдает результат (даже если элементов нет)
+        WebElement td = driver.findElement(By.tagName("td")); // если еслемент не найден выдает ошибку
 
-        By emailFieldLocator = By.xpath("//*[@type='email']");
-        WebElement emailField = driver.findElement(emailFieldLocator);
-        emailField.sendKeys("Flower_cool@mail.ru");
+        // quit, close - оба закрывают, но close закрывает страницу, а quit полностью браузер (сейчас close не используется)
 
-        By passwordFieldLocator = By.cssSelector("[type=\"password\"]");
-        WebElement passwordField = driver.findElement(passwordFieldLocator);
-        passwordField.sendKeys("3103-juliana");
+        driver.navigate().refresh(); // обноволение страницы
 
-        By loginButtonLocator = By.xpath("//*[@type=\"submit\"]");
-        WebElement loginButton = driver.findElement(loginButtonLocator);
-        loginButton.click();
-        Thread.sleep(2000);
+        // свойства WebElement
 
-        By homeIconLocator = By.className("home");
-        WebElement homeIcon = driver.findElement(homeIconLocator);
-        Assert.assertTrue(homeIcon.isDisplayed());
+        WebElement div0 = dive.get(0);
+        System.out.println(div0.getTagName()); // вытаскивает тэг элемента
+
+        System.out.println(div0.isDisplayed()); // мщет отображается ли элемент на экране браузера
+        System.out.println(div0.isEnabled()); // указывает, включено ли правило
+
+        // getAttribute помогает найти атрибут внутри элемента
     }
 }
+

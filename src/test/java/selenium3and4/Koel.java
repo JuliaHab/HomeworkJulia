@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 public class Koel {
 
     @Test
-    // загрузка страницы в браузере
     public void loginToKoel() throws InterruptedException {
 
         // подтянули драйвера и сказали открыть браузер и какой именно
@@ -35,6 +34,7 @@ public class Koel {
         loginButton.click();
         Thread.sleep(2000); // дали немного времени загрузится странице перед поиском кнопки home
 
+        // установили локатор xPath на элементе home, сказали браузеру найти её и сказали отобразить именно эту кнопку
         By homeIconLocator = By.className("home");
         WebElement homeIcon = driver.findElement(homeIconLocator);
         Assert.assertTrue(homeIcon.isDisplayed());
