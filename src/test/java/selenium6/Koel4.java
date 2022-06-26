@@ -27,7 +27,7 @@ public class Koel4 {
     public void startBeforeEveryTest() {
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 10, 200); // в переменных прописываем драйвер, максимальное ожидание в секундах, и повтор поиска в милисекундах
+        wait = new WebDriverWait(driver, 10, 2000); // в переменных прописываем драйвер, максимальное ожидание в секундах, и повтор поиска в милисекундах
 //      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         /* этa строчка говорит о том что после того как страница загрузиться будет произведено дальнейшее действие сразу, поэтому Thread.sleep ранее использованные больше не нужны. Минус: заключется в том, что ждет поиск каждого
         элемента примерно 0,5 секунд и если таких элементов много, то это лишняя трата времени */
@@ -86,5 +86,35 @@ public class Koel4 {
         wait.until(ExpectedConditions.visibilityOfElementLocated(homeIconLocator)); // ждет пока не произойдет ожидаемое событие, т.е. пока не появится элемент "home"
         WebElement homeIcon = driver.findElement(homeIconLocator);
         Assert.assertTrue(homeIcon.isDisplayed());
+    }
+
+    @Test
+    public void createPlaylist () throws InterruptedException {
+
+        By emailFieldLocator = By.xpath("//*[@type='email']");
+        WebElement emailField = driver.findElement(emailFieldLocator);
+        emailField.sendKeys("Flower_cool@mail.ru");
+
+        By passwordFieldLocator = By.cssSelector("[type=\"password\"]");
+        WebElement passwordField = driver.findElement(passwordFieldLocator);
+        passwordField.sendKeys("3103-juliana");
+
+        By loginButtonLocator = By.xpath("//*[@type=\"submit\"]");
+        WebElement loginButton = driver.findElement(loginButtonLocator);
+        loginButton.click();
+
+        By createPlaylist = By.xpath("//*[@class=\"fa fa-plus-circle create\"]");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(createPlaylist));
+        WebElement clickCreatePlaylist = driver.findElement(createPlaylist);
+        clickCreatePlaylist.click();
+
+        By newCreatePlaylist = By.xpath("//*[@class=\"menu playlist-menu\"]/ul/li[1]");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(newCreatePlaylist));
+        WebElement clickNewPlaylist = driver.findElement(newCreatePlaylist);
+        clickNewPlaylist.click();
+
+        By fieldNamePlaylist = By.xpath("//*[@class=\"create\"]/input");
+        WebElement namePlaylist = driver.findElement(fieldNamePlaylist);
+        namePlaylist.sendKeys("New Music");
     }
 }

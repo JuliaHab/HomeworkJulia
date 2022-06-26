@@ -20,7 +20,7 @@ public class GU {
     public void startBeforeEveryTest(){
         System.setProperty("webdriver.chrome.driver","chromedriver.exe");
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 5, 5);
+        wait = new WebDriverWait(driver, 5, 200);
         driver.get("https://www.gosuslugi.ru/");
     }
 
@@ -40,19 +40,19 @@ public class GU {
 
         By emailFieldLocator = By.xpath("//*[@id='login']");
         WebElement emailField = driver.findElement(emailFieldLocator);
-        emailField.sendKeys("Telefon");
+        emailField.sendKeys(     );
         Thread.sleep(2000);
 
         By passwordFieldLocator = By.cssSelector("[id=\"password\"]");
         WebElement passwordField = driver.findElement(passwordFieldLocator);
-        passwordField.sendKeys("password");
+        passwordField.sendKeys("@Juliana-3103");
         Thread.sleep(2000);
 
         By loginButtonLocator = By.xpath("//*[@class=\"mb-24\"]");
         WebElement loginButton = driver.findElement(loginButtonLocator);
         loginButton.click();
 
-        By nameLocator1 = By.cssSelector("class=\"header merge-header\"");
+        By nameLocator1 = By.cssSelector(     );
         wait.until(ExpectedConditions.visibilityOfElementLocated(nameLocator1));
         WebElement nameLocator = driver.findElement(nameLocator1);
         Assert.assertTrue(nameLocator.isDisplayed());
