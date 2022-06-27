@@ -1,8 +1,29 @@
 package hwselenium2;
 
 public class Seals implements Mammals{
-    String nameSeals;
-    int age;
+    private String nameSeals;
+    private int age;
+
+    public Seals(String nameSeals, int age) {
+        this.nameSeals = nameSeals;
+        this.age = age;
+    }
+
+    public String getNameSeals() {
+        return nameSeals;
+    }
+
+    public void setNameSeals(String nameSeals) {
+        this.nameSeals = nameSeals;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     @Override
     public void canEat() {

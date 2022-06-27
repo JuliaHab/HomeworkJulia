@@ -1,9 +1,39 @@
 package hwselenium2;
 
 public class Carnivores implements Mammals{
-    String nameCarnivores;
-    String lifeIn;
-    int age;
+    private String nameCarnivores;
+    private String lifeIn;
+    private int age;
+
+    public Carnivores(String nameCarnivores, String lifeIn, int age) {
+        this.nameCarnivores = nameCarnivores;
+        this.lifeIn = lifeIn;
+        this.age = age;
+    }
+
+    public String getNameCarnivores() {
+        return nameCarnivores;
+    }
+
+    public String getLifeIn() {
+        return lifeIn;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setNameCarnivores(String nameCarnivores) {
+        this.nameCarnivores = nameCarnivores;
+    }
+
+    public void setLifeIn(String lifeIn) {
+        this.lifeIn = lifeIn;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     @Override
     public void canEat() {

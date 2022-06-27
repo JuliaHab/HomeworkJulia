@@ -1,8 +1,29 @@
 package hwselenium2;
 
 public class Whales implements Mammals{
-    String nameWhales;
-    int age;
+    private String nameWhales;
+    private int age;
+
+    public Whales(String nameWhales, int age) {
+        this.nameWhales = nameWhales;
+        this.age = age;
+    }
+
+    public String getNameWhales() {
+        return nameWhales;
+    }
+
+    public void setNameWhales(String nameWhales) {
+        this.nameWhales = nameWhales;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     @Override
     public void canEat() {

@@ -1,11 +1,18 @@
 package hwselenium2;
 
 public class Lion extends Carnivores{
-    String nameLion;
-    int age;
+    private String nameLion;
 
-    public Lion(String nameLion, int age) {
+    public Lion(String nameCarnivores, String lifeIn, int age, String nameLion) {
+        super(nameCarnivores, lifeIn, age);
         this.nameLion = nameLion;
-        this.age = age;
+    }
+
+    public String getNameLion() {
+        return nameLion;
+    }
+
+    public void setNameLion(String nameLion) {
+        this.nameLion = nameLion;
     }
 }

@@ -1,8 +1,29 @@
 package hwselenium2;
 
 public class Rodents implements Mammals{
-    String nameRodents;
-    int age;
+    private String nameRodents;
+    private int age;
+
+    public Rodents(String nameRodents, int age) {
+        this.nameRodents = nameRodents;
+        this.age = age;
+    }
+
+    public String getNameRodents() {
+        return nameRodents;
+    }
+
+    public void setNameRodents(String nameRodents) {
+        this.nameRodents = nameRodents;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     @Override
     public void canEat() {

@@ -1,9 +1,39 @@
 package hwselenium2;
 
 public class Primates implements Mammals{
-    String types;
-    String namePrimates;
-    int age;
+    private String types;
+    private String namePrimates;
+    private int age;
+
+    public Primates(String types, String namePrimates, int age) {
+        this.types = types;
+        this.namePrimates = namePrimates;
+        this.age = age;
+    }
+
+    public String getTypes() {
+        return types;
+    }
+
+    public void setTypes(String types) {
+        this.types = types;
+    }
+
+    public String getNamePrimates() {
+        return namePrimates;
+    }
+
+    public void setNamePrimates(String namePrimates) {
+        this.namePrimates = namePrimates;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     @Override
     public void canEat() {

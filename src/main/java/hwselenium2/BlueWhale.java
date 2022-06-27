@@ -1,11 +1,18 @@
 package hwselenium2;
 
 public class BlueWhale extends Whales{
-    String nameBlueWhale;
-    int age;
+    private String nameBlueWhale;
 
-    public BlueWhale(String nameBlueWhale, int age) {
+    public BlueWhale(String nameWhales, int age, String nameBlueWhale) {
+        super(nameWhales, age);
         this.nameBlueWhale = nameBlueWhale;
-        this.age = age;
+    }
+
+    public String getNameBlueWhale() {
+        return nameBlueWhale;
+    }
+
+    public void setNameBlueWhale(String nameBlueWhale) {
+        this.nameBlueWhale = nameBlueWhale;
     }
 }
