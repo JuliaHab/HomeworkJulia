@@ -40,12 +40,12 @@ public class GU {
 
         By emailFieldLocator = By.xpath("//*[@id='login']");
         WebElement emailField = driver.findElement(emailFieldLocator);
-        emailField.sendKeys("89636577410");
+        emailField.sendKeys("");
         Thread.sleep(2000);
 
         By passwordFieldLocator = By.cssSelector("[id=\"password\"]");
         WebElement passwordField = driver.findElement(passwordFieldLocator);
-        passwordField.sendKeys("@Juliana-3103");
+        passwordField.sendKeys("");
         Thread.sleep(2000);
 
         By loginButtonLocator = By.xpath("//*[@class=\"mb-24\"]");
