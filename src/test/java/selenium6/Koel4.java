@@ -116,5 +116,11 @@ public class Koel4 {
         By fieldNamePlaylist = By.xpath("//*[@class=\"create\"]/input");
         WebElement namePlaylist = driver.findElement(fieldNamePlaylist);
         namePlaylist.sendKeys("New Music");
+        namePlaylist.sendKeys(Keys.ENTER);
+
+        By myPlaylistLocator = By.xpath("//*[@class=\"playlist playlist\"]");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(myPlaylistLocator)); // ждет пока не произойдет ожидаемое событие, т.е. пока не появится элемент "home"
+        WebElement myPlaylist = driver.findElement(myPlaylistLocator);
+        Assert.assertTrue(myPlaylist.isDisplayed());
     }
 }
