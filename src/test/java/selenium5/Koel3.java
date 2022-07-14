@@ -43,7 +43,7 @@ public class Koel3 {
         System.out.println(dive.size());
 
         List<WebElement> tds = driver.findElements(By.tagName("td")); // ищет элементы и выдает результат (даже если элементов нет)
-        WebElement td = driver.findElement(By.tagName("td")); // если еслемент не найден выдает ошибку
+        WebElement td = driver.findElement(By.tagName("td")); // если элемент не найден выдает ошибку
 
         // quit, close - оба закрывают, но close закрывает страницу, а quit полностью браузер (сейчас close не используется)
 

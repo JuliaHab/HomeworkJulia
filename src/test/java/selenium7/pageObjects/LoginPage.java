@@ -32,8 +32,6 @@ public class LoginPage {
         return driver.findElement(loginButtonLocator);
     }
 
-    // прописать 3 веб элемента
-
     public MainPage loginToApp(String username, String password){
         getEmailField().sendKeys(username);
         getPasswordField().sendKeys(password);
@@ -46,12 +44,12 @@ public class LoginPage {
     }
 
     public boolean isRedFrame() {
-        By errorFrameLocator = By.className("error");
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(errorFrameLocator));
-            return true;
-        } catch (TimeoutException err){
-            return false;
-        }
+            By errorFrameLocator = By.className("error");
+            try {
+                wait.until(ExpectedConditions.visibilityOfElementLocated(errorFrameLocator));
+                return true;
+            } catch (TimeoutException err){
+                return false;
+            }
     }
 }

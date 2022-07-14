@@ -11,7 +11,7 @@ import selenium7.pageObjects.MainPage;
 
 public class LoginTest {
 
-    // прописываются сами тесты (очень похожи на
+    // прописываются сами тесты (очень похожи на тест-кейсы)
 
     private WebDriver driver;
     private String url;
@@ -32,9 +32,9 @@ public class LoginTest {
     @Test
     public void LoginTest_correct_credentials_LoggedToApp(){
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.navigete(url);
-        MainPage mainPage = loginPage.loginToApp("Flower_cool@mail.ru","3103-juliana");
-        Assert.assertTrue(mainPage.isMainPage());
+        loginPage.navigete(url);                             // предусловие
+        MainPage mainPage = loginPage.loginToApp("Flower_cool@mail.ru","3103-juliana"); // шаги
+        Assert.assertTrue(mainPage.isMainPage()); // результат
     }
 
     @Test

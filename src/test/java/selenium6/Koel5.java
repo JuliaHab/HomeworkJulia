@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 
-public class Koel5 {
+public class  Koel5 {
 
     private WebDriver driver;
     private WebDriverWait wait;

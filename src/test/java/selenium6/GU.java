@@ -17,8 +17,8 @@ public class GU {
     private WebDriverWait wait;
 
     @BeforeMethod
-    public void startBeforeEveryTest(){
-        System.setProperty("webdriver.chrome.driver","chromedriver.exe");
+    public void startBeforeEveryTest() {
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 5, 200);
         driver.get("https://www.gosuslugi.ru/");
@@ -31,7 +31,7 @@ public class GU {
     }
 
     @Test
-    public void LoginGU() throws InterruptedException{
+    public void LoginGU() throws InterruptedException {
 
         By loginButtonLocator2 = By.xpath("//*[@class=\"link ng-star-inserted\"]");
         WebElement loginButton2 = driver.findElement(loginButtonLocator2);
@@ -40,7 +40,7 @@ public class GU {
 
         By emailFieldLocator = By.xpath("//*[@id='login']");
         WebElement emailField = driver.findElement(emailFieldLocator);
-        emailField.sendKeys(     );
+        emailField.sendKeys("89636577410");
         Thread.sleep(2000);
 
         By passwordFieldLocator = By.cssSelector("[id=\"password\"]");
@@ -52,10 +52,10 @@ public class GU {
         WebElement loginButton = driver.findElement(loginButtonLocator);
         loginButton.click();
 
-        By nameLocator1 = By.cssSelector(     );
+        By nameLocator1 = By.xpath("href=https://www.gosuslugi.ru/newsearch");
         wait.until(ExpectedConditions.visibilityOfElementLocated(nameLocator1));
         WebElement nameLocator = driver.findElement(nameLocator1);
         Assert.assertTrue(nameLocator.isDisplayed());
         }
-    }
+}
 
