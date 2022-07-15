@@ -2,15 +2,12 @@ package selenium7.pageObjects;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.NoSuchElementException;
 
-public class MainPage {
-    private WebDriver driver;
-    private WebDriverWait wait;
+public class MainPage extends BasePage{
 
     public MainPage(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver,5, 2000);
+        super(driver);
     }
 
     public boolean isMainPage() {
@@ -23,16 +20,16 @@ public class MainPage {
         }
     }
 
-    private WebElement getCreatePlaylist(){
-        By createPlaylist = By.xpath("//*[@class=\"fa fa-plus-circle create\"]");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(createPlaylist));
-        return driver.findElement(createPlaylist);
+    private WebElement getIconPlus(){
+        By iconPlusLocator = By.xpath("//*[@class=\"fa fa-plus-circle create\"]");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(iconPlusLocator));
+        return driver.findElement(iconPlusLocator);
     }
 
-    private WebElement getNewCreatePlaylist(){
-        By newCreatePlaylist = By.xpath("//*[@class=\"menu playlist-menu\"]/ul/li[1]");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(newCreatePlaylist));
-        return driver.findElement(newCreatePlaylist);
+    private WebElement getButtonNewPlaylist(){
+        By buttonNewPlaylistLocator = By.xpath("//*[@class=\"menu playlist-menu\"]/ul/li[1]");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(buttonNewPlaylistLocator));
+        return driver.findElement(buttonNewPlaylistLocator);
     }
 
     private WebElement getFieldNamePlaylist(){
@@ -40,11 +37,28 @@ public class MainPage {
         return driver.findElement(fieldNamePlaylist);
     }
 
-    public PlaylistPage createPlaylist(String playlistName) {
-        getCreatePlaylist().click();
-        getNewCreatePlaylist().click();
+    public String createPlaylist(String playlistName) {
+        getIconPlus().click();
+        getButtonNewPlaylist().click();
         getFieldNamePlaylist().sendKeys(playlistName);
-        getFieldNamePlaylist().sendKeys(Keys.ENTER);
-        return new PlaylistPage(driver);
+        getFieldNamePlaylist().sendKeys(Keys.ENTER); // нажатие Enter
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='success show']"))); // ждем зеленую рамку, подверждающую создание плейлиста
+        return driver.getCurrentUrl().split("/")[5]; // вытаскиваем из url id созданного плейлиста (split делит url на части с учетом "/", а потом мы вызываем его 6 часть)
+    }
+
+    private WebElement getPlaylist(String playlistId){
+        return driver.findElement(By.xpath("//*[@href='#!/playlist/"+playlistId+"']")); // ищем xpath созданного плейлиста, но он меняется в зависимости от id, поэтому мы вставляем найденое id ранее
+    }
+
+    public boolean checkPlaylist(String playlistId, String playlistName){   // это проверка созданного плейлиста - Assert
+        try{
+            return getPlaylist(playlistId).isDisplayed() && getPlaylist(playlistId).getText().equals(playlistName); // условия: id и название плейлиста, если все условия верные, возвращает true
+        } catch (NoSuchElementException err){
+            return false;
+        }
+    }
+
+    public void renamePlaylist(String playlistId, String newName) {
+
     }
 }
