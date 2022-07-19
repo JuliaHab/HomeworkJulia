@@ -28,6 +28,7 @@ public class PlaylistTest extends BaseTest{
         MainPage mainPage = loginPage.loginToApp("Flower_cool@mail.ru","3103-juliana");
         String playlistId = mainPage.createPlaylist(playlistName);
         String newName = faker.ancient().god();
+        System.out.println(newName);
         mainPage.renamePlaylist(playlistId,newName);
         Assert.assertTrue(mainPage.checkPlaylist(playlistId,newName));
     }

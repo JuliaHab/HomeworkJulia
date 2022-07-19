@@ -13,7 +13,7 @@ public class LoginTest extends BaseTest{
     public void LoginTest_correct_credentials_LoggedToApp(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.navigete(url);                             // предусловие
-        MainPage mainPage = loginPage.loginToApp("Flower_cool@mail.ru","3103-juliana"); // шаги
+        MainPage mainPage = loginPage.loginToApp(username,password); // шаги
         Assert.assertTrue(mainPage.isMainPage()); // результат
     }
 
@@ -21,7 +21,7 @@ public class LoginTest extends BaseTest{
     public void LoginTest_incorrectCredentials_redFrame(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.navigete(url);
-        loginPage.loginToApp("Flower_cool@mail.ru","errorPassword");
+        loginPage.loginToApp(username,errorPassword);
         Assert.assertTrue(loginPage.isRedFrame());
     }
 }
